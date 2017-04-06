@@ -1,6 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="nextButton"
+            type="com.kaitait.droidtemplate.app.viewmodels.HomeViewModel"/>
+    </data>
+
 <LinearLayout
     android:id="@+id/row_root"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipChildren="false"
@@ -24,4 +35,13 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/img_face"
         android:text="default." />
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/next"
+        android:onClick="@{nextButton.next_click}" />
 </LinearLayout>
+</layout>

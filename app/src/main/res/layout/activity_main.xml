@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.kaitait.droidtemplate.app.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/controller_container"
-        android:layout_width="108dp"
-        android:layout_height="495dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="477dp"
-        tools:layout_editor_absoluteY="16dp">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/Apple"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarr"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Apple" />
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            />
 
-        <Button
-            android:id="@+id/Mango"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mango" />
+    </android.support.design.widget.AppBarLayout>
 
-        <Button
-            android:id="@+id/Banana"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Banana" />
+    <com.bluelinelabs.conductor.ChangeHandlerFrameLayout
+        android:id="@+id/controller_containerr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="activity main text view"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>
