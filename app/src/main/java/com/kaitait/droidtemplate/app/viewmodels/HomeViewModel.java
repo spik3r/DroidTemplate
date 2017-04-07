@@ -1,23 +1,24 @@
 package com.kaitait.droidtemplate.app.viewmodels;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.ObservableField;
 
 import io.reactivex.subjects.PublishSubject;
 
-/**
- * Created by kai-tait on 6/04/2017.
- */
-
 public class HomeViewModel extends BaseObservable {
+    public ObservableField<String> title = new ObservableField<>();
+    public ObservableField<String> text_field = new ObservableField<>();
     public PublishSubject<Object> next_click;
 
-
-    public HomeViewModel() {
-        InitialiseClickObservables();
+    public HomeViewModel(String title, String textField) {
+        this.next_click = PublishSubject.create();
+        this.title.set(title);
+        this.text_field.set(textField);
     }
 
-    private void InitialiseClickObservables()
-    {
-        this.next_click = PublishSubject.create();
+    @Bindable
+    public String getTextField() {
+        return this.text_field.get();
     }
 }
