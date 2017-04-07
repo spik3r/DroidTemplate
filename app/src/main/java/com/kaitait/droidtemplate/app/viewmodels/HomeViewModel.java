@@ -8,6 +8,7 @@ import io.reactivex.subjects.PublishSubject;
 
 public class HomeViewModel extends BaseObservable {
     public ObservableField<String> title = new ObservableField<>();
+    public ObservableField<String> dateTimeTextView = new ObservableField<>();
     public ObservableField<String> text_field = new ObservableField<>();
     public PublishSubject<Object> next_click;
 
@@ -15,6 +16,7 @@ public class HomeViewModel extends BaseObservable {
         this.next_click = PublishSubject.create();
         this.title.set(title);
         this.text_field.set(textField);
+        this.dateTimeTextView.set("default");
     }
 
     @Bindable

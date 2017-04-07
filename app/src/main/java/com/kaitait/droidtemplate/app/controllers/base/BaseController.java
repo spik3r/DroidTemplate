@@ -15,9 +15,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by kai-tait on 6/04/2017.
- */
 
 public abstract class BaseController extends RxController {
     private CompositeDisposable composite_disposable = new CompositeDisposable();

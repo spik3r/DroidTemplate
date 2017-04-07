@@ -31,10 +31,4 @@ public class AppModule
     {
         return (LayoutInflater) app_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-    
-    /*@Provides
-    Toolbar ProvidesToolbar()
-    {
-        return new Toolbar(this.app_context, )
-    }*/
 }

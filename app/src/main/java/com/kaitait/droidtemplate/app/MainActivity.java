@@ -14,8 +14,7 @@ import com.kaitait.droidtemplate.app.controllers.HomeController;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements ActionBarProvider{
-
+public class MainActivity extends AppCompatActivity implements ActionBarProvider {
 
     @BindView(R.id.controller_containerr)
     ViewGroup container;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements ActionBarProvider
 
         this.router = Conductor.attachRouter(this, this.container, savedInstanceState);
         if (!router.hasRootController()) {
-//            router.setRoot(RouterTransaction.with(new NavigationDemoController(0, NavigationDemoController.DisplayUpMode.SHOW_FOR_CHILDREN_ONLY)));
             router.setRoot(RouterTransaction.with(new HomeController()));
         }
     }
@@ -45,5 +43,4 @@ public class MainActivity extends AppCompatActivity implements ActionBarProvider
             super.onBackPressed();
         }
     }
-
 }

@@ -9,10 +9,17 @@ import android.view.ViewGroup;
 import com.bluelinelabs.conductor.RouterTransaction;
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
 import com.kaitait.droidtemplate.R;
+import com.kaitait.droidtemplate.app.Clock;
+import com.kaitait.droidtemplate.app.ConductorApplication;
 import com.kaitait.droidtemplate.app.controllers.base.BaseController;
 import com.kaitait.droidtemplate.app.util.DisposableUIObserver;
 import com.kaitait.droidtemplate.app.viewmodels.HomeViewModel;
 import com.kaitait.droidtemplate.databinding.ControllerHomeBinding;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
@@ -23,6 +30,10 @@ public class HomeController extends BaseController {
 
     private HomeViewModel homeViewModel;
     private ControllerHomeBinding binding;
+
+
+    @Inject
+    Clock clock;
 
     public HomeController()
     {
@@ -38,6 +49,7 @@ public class HomeController extends BaseController {
     {
         super.OnViewButterknifeBound(view, inflater);
         this.binding = ControllerHomeBinding.bind(view);
+        ConductorApplication.getClockComponent().inject(this);
         this.homeViewModel = new HomeViewModel("Home Controller", "");
         binding.setViewModel(this.homeViewModel);
         SetObservers();
@@ -61,7 +73,19 @@ public class HomeController extends BaseController {
                 binding.getViewModel().next_click,
                 LaunchNextController());
 
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                setTime();
+            }
+        };
+        timer.schedule(timerTask, 1000L);
+    }
 
+    private void setTime() {
+        binding.getViewModel().dateTimeTextView.set(clock.getNow().toString());
+//        AsyncTask.execute(() -> binding.getViewModel().dateTimeTextView.set(clock.getNow().toString()));
     }
 
     @NonNull
