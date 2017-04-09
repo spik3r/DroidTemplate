@@ -1,7 +1,10 @@
 package com.kaitait.droidtemplate.app.controllers;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
 import com.kaitait.droidtemplate.R;
 import com.kaitait.droidtemplate.app.Clock;
 import com.kaitait.droidtemplate.app.ConductorApplication;
+import com.kaitait.droidtemplate.app.DateUtils;
 import com.kaitait.droidtemplate.app.controllers.base.BaseController;
 import com.kaitait.droidtemplate.app.util.DisposableUIObserver;
 import com.kaitait.droidtemplate.app.viewmodels.HomeViewModel;
@@ -73,19 +77,24 @@ public class HomeController extends BaseController {
                 binding.getViewModel().next_click,
                 LaunchNextController());
 
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
+        updateViewModel();
+    }
+
+    private void updateViewModel() {
+        Handler handler = new Handler();
+        int delay = 1000;
+
+        handler.postDelayed(new Runnable(){
+            public void run(){
                 setTime();
+                handler.postDelayed(this, delay);
             }
-        };
-        timer.schedule(timerTask, 1000L);
+        }, delay);
     }
 
     private void setTime() {
+//        binding.getViewModel().dateTimeTextView.set(DateUtils.format(clock.getNow()));
         binding.getViewModel().dateTimeTextView.set(clock.getNow().toString());
-//        AsyncTask.execute(() -> binding.getViewModel().dateTimeTextView.set(clock.getNow().toString()));
     }
 
     @NonNull
