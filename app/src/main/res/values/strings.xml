@@ -44,4 +44,12 @@
     <string name="transition_tag_image_named">transition.image%1$s</string>
     <string name="transition_tag_title_named">transition.title%1$s</string>
 
+    <string-array name="array_name">
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Pear</item>
+        <item>Mandarin</item>
+        <item>Plum</item>
+    </string-array>
+
 </resources>

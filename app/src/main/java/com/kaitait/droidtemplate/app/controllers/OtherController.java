@@ -16,7 +16,7 @@ public class OtherController extends BaseController {
 
     OtherViewModel otherViewModel;
     ControllerOtherBinding binding;
-
+    
     public OtherController(Bundle args) {
         super(args);
     }
@@ -45,6 +45,7 @@ public class OtherController extends BaseController {
         this.RegisterObserverForDisposal(
                 binding.getViewModel().back_click,
                 LaunchBackController());
+        
     }
 
     @NonNull

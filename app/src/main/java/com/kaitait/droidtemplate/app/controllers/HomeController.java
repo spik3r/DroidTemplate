@@ -1,10 +1,8 @@
 package com.kaitait.droidtemplate.app.controllers;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +12,10 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
 import com.kaitait.droidtemplate.R;
 import com.kaitait.droidtemplate.app.Clock;
 import com.kaitait.droidtemplate.app.ConductorApplication;
-import com.kaitait.droidtemplate.app.DateUtils;
 import com.kaitait.droidtemplate.app.controllers.base.BaseController;
 import com.kaitait.droidtemplate.app.util.DisposableUIObserver;
 import com.kaitait.droidtemplate.app.viewmodels.HomeViewModel;
 import com.kaitait.droidtemplate.databinding.ControllerHomeBinding;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.inject.Inject;
 
@@ -38,7 +32,7 @@ public class HomeController extends BaseController {
 
     @Inject
     Clock clock;
-
+    
     public HomeController()
     {
         this(null);
