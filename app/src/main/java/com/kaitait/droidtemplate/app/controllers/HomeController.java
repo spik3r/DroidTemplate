@@ -1,5 +1,6 @@
 package com.kaitait.droidtemplate.app.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
 import com.kaitait.droidtemplate.R;
 import com.kaitait.droidtemplate.app.Clock;
 import com.kaitait.droidtemplate.app.ConductorApplication;
+import com.kaitait.droidtemplate.app.OtherActivity;
 import com.kaitait.droidtemplate.app.controllers.base.BaseController;
 import com.kaitait.droidtemplate.app.util.DisposableUIObserver;
 import com.kaitait.droidtemplate.app.viewmodels.HomeViewModel;
@@ -23,6 +25,8 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
+
+import static android.R.attr.value;
 
 public class HomeController extends BaseController {
 
@@ -70,6 +74,9 @@ public class HomeController extends BaseController {
         this.RegisterObserverForDisposal(
                 binding.getViewModel().next_click,
                 LaunchNextController());
+        this.RegisterObserverForDisposal(
+                binding.getViewModel().intent_click,
+                intentController());
 
         updateViewModel();
     }
@@ -103,6 +110,19 @@ public class HomeController extends BaseController {
             }
         };
     }
+    
+    @NonNull
+    private DisposableUIObserver intentController()
+    {
+        return new DisposableUIObserver()
+        {
+            @Override
+            public void onNext(Object edit_click)
+            {
+                goToSomeOtherActivity();
+            }
+        };
+    }
 
     public void RegisterObserverForDisposal(Observable observable, DisposableObserver observer) {
         CompositeDisposable composite_disposable = new CompositeDisposable();
@@ -112,5 +132,14 @@ public class HomeController extends BaseController {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+    
+    public void goToSomeOtherActivity()
+    {
+        final Intent intent = new Intent(
+                getActivity(),
+                OtherActivity.class);
+        intent.putExtra("key", value); //Optional parameters
+        startActivity(intent);
     }
 }

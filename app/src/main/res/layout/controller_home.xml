@@ -90,6 +90,16 @@
         android:layout_below="@+id/editText"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:id="@+id/intent_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="intent"
+        android:onClick="@{ViewModel.intent_click}"
+        android:layout_marginTop="68dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
     <TextView
         android:id="@+id/dateTimeTextView"
         android:layout_width="wrap_content"

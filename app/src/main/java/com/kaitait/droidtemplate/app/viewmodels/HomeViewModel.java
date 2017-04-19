@@ -11,9 +11,11 @@ public class HomeViewModel extends BaseObservable {
     public ObservableField<String> dateTimeTextView = new ObservableField<>();
     public ObservableField<String> text_field = new ObservableField<>();
     public PublishSubject<Object> next_click;
+    public PublishSubject<Object> intent_click;
 
     public HomeViewModel(String title, String textField) {
         this.next_click = PublishSubject.create();
+        this.intent_click = PublishSubject.create();
         this.title.set(title);
         this.text_field.set(textField);
         this.dateTimeTextView.set("default");

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements ActionBarProvider
     @BindView(R.id.toolbarr)
     Toolbar toolbar;
 
-    private Router router;
+    private static Router router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements ActionBarProvider
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        this.router = Conductor.attachRouter(this, this.container, savedInstanceState);
+        router = Conductor.attachRouter(this, this.container, savedInstanceState);
         if (!router.hasRootController()) {
             router.setRoot(RouterTransaction.with(new HomeController()));
         }
@@ -42,5 +42,9 @@ public class MainActivity extends AppCompatActivity implements ActionBarProvider
         if (!router.handleBack()) {
             super.onBackPressed();
         }
+    }
+    
+    public Router getRouter() {
+        return router;
     }
 }
